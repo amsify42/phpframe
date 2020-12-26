@@ -1,5 +1,5 @@
 # Model
-The [Model](https://github.com/amsify42/phpattern/blob/master/console/src/Database/Model.php) class helps in creating db models for different database table and easily perform **insert**/**update**/**delete** queries.
+The [Model](https://github.com/amsify42/phpattern/blob/master/src/Database/Model.php) class helps in creating db models for different database table and easily perform **insert**/**update**/**delete** queries.
 
 ## Table of Contents
 1. [Class](#1-class)

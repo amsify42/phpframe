@@ -52,7 +52,7 @@ class User extends Action
     }
 }
 ```
-The `$request` instance here can call all the methods that [`\PHPattern\Request`](#5-request) can call.
+The `$request` instance here can call all the methods that [`\PHPattern\Request`](https://github.com/amsify42/phpattern/blob/master/src/Request.php) can call.
 ```php
 /**
  * For getting all bodyData/formData

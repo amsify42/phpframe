@@ -1,3 +1,5 @@
+[< Main](https://github.com/amsify42/phpframe/blob/master/README.md)
+
 ## Routes
 Routes can either be set automatically based on `Action` and its method combination or can be set manually in `/config/routes.php`.
 

@@ -8,6 +8,7 @@ The [Model](https://github.com/amsify42/phpattern/blob/master/src/Database/Model
 2. [Class Properties](#2-class-properties)
 3. [Querying](#3-querying)
 4. [Relations](#4-relations)
+5. [Settings](#5-settings)
 
 ### 1. Class
 You can also create/generate class with extends `PHPattern\Database\Model` class.
@@ -217,8 +218,15 @@ $data = [
 ];
 $noOfRows = User::set($data)->where('parent_id', 1)->update();
 ```
-It will return number of rows effected.
-
+It will return number of rows effected and for updating active/found record.
+```php
+$user = User::find(1);
+if($user)
+{
+    $user->name = 'something else';
+    $user->save();
+}
+```
 #### Delete
 ```php
 $userId   = 10;
@@ -229,7 +237,15 @@ This method takes either array of conditions or primary id value to delete the r
 $conditions = ['parent_id' => 1];
 $noOfRows = User::delete($conditions);
 ```
-It will return number of rows effected.
+It will return number of rows effected and for deleting active/found record.
+```php
+$user = User::find(1);
+if($user)
+{
+    $user->name = 'something else';
+    $user->remove();
+}
+```
 
 #### Join
 For joining the tables
@@ -308,4 +324,82 @@ class Category extends Model
 ```php
 $category = Category::find(1);
 $user = $category->user();
+```
+
+### 5. Settings
+These are the protected properties you can set for model class.
+#### table
+To set the exact name of the mysql table.
+```php
+<?php
+
+namespace App\Models;
+
+use PHPattern\Database\Model;
+
+class User extends Model
+{
+    protected $table = 'users';
+}
+```
+#### primaryKey
+To set the primary key column name. Default value is `id`
+```php
+<?php
+
+namespace App\Models;
+
+use PHPattern\Database\Model;
+
+class User extends Model
+{
+    protected $primaryKey = 'userid';
+}
+```
+#### timestamps
+This protected property expects boolean value.
+```php
+<?php
+
+namespace App\Models;
+
+use PHPattern\Database\Model;
+
+class User extends Model
+{
+    protected $timestamps = true;
+}
+```
+It defaults to `false` and when set to `true`, it save these column values when creating/updating row of the model table.
+```
+created_at
+updated_at
+```
+#### isORM
+By default all result rows comes with instance of model class. If you want result to be in simple object. You can set this property as `false`.
+```php
+<?php
+
+namespace App\Models;
+
+use PHPattern\Database\Model;
+
+class User extends Model
+{
+    protected $isORM = false;
+}
+```
+#### fetchObj
+When you decided to set **isORM** as `false` and you want result rows to be in associative array instead of objects, you can set this value to `false`.
+```php
+<?php
+
+namespace App\Models;
+
+use PHPattern\Database\Model;
+
+class User extends Model
+{
+    protected $fetchObj = false;
+}
 ```

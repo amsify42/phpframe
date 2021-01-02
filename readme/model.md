@@ -1,7 +1,7 @@
 [< Main](https://github.com/amsify42/phpframe/blob/master/README.md)
 
 ## Model
-The [Model](https://github.com/amsify42/phpattern/blob/master/src/Database/Model.php) class helps in creating db models for different database table and easily perform **insert**/**update**/**delete** queries.
+The [Model](https://github.com/amsify42/phpattern/blob/master/src/Database/Model.php) class helps in creating db models for different database table and easily perform **select**/**insert**/**update**/**delete** queries.
 
 ## Table of Contents
 1. [Class](#1-class)
@@ -370,7 +370,7 @@ class User extends Model
     protected $timestamps = true;
 }
 ```
-It defaults to `false` and when set to `true`, it save these column values when creating/updating row of the model table.
+It defaults to `false` and when set to `true`, it save these column values when inserting/updating row of the model table.
 ```
 created_at
 updated_at
